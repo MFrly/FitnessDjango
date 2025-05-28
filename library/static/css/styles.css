@@ -1,6 +1,4 @@
-/* styles.css */
 
-/* Global reset */
 * {
     margin: 0;
     padding: 0;
@@ -10,18 +8,19 @@
 /* Base styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
+    background-color: #55555d;
     color: #333;
     padding: 20px;
 }
 
 /* Header */
 header {
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 header h1 {
@@ -41,7 +40,7 @@ nav a:hover {
 
 /* Main content */
 main {
-    background-color: white;
+    background-color: #2F2E2E;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -51,7 +50,7 @@ main {
 footer {
     text-align: center;
     margin-top: 40px;
-    color: #666;
+    color: #fffefe;
 }
 
 /* Utility classes */
