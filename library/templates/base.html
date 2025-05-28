@@ -1,27 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Školní knihovna{% endblock %}</title>
-    <!-- Bootstrap CSS -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <title>{% block title %}Fitness App{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <!-- Záhlaví -->
-     {% include 'page/header.html' %}
-    <!-- Navigace -->
-    {% include 'page/navbar.html' %}
-    <!-- Obsah stránky -->
-    <main class="container">
-    {% block content %}{% endblock %}
+    <header>
+        <h1>Fitness App</h1>
+        <nav>
+            <a href="{% url 'userprofile-list' %}">User Profiles</a> |
+            <a href="{% url 'workoutplan-list' %}">Workout Plans</a> |
+            <a href="{% url 'exercise-list' %}">Exercises</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
     </main>
-    <!-- Zápatí -->
-     {% include 'page/footer.html' %}
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{% static 'bootstrap/jquery-3.3.1.slim.min.js' %}"></script>
-    <script src="{% static 'bootstrap/popper.min.js' %}"></script>
-    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+    <footer>
+        <p>&copy; 2025 Fitness App</p>
+    </footer>
 </body>
 </html>

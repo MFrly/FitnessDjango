@@ -21,4 +21,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('profiles/', views.UserProfileListView.as_view(), name='userprofile-list'),
+    path('workout-plans/', views.WorkoutPlanListView.as_view(), name='workoutplan-list'),
+    path('workout-plans/<int:pk>/', views.WorkoutPlanDetailView.as_view(), name='workoutplan-detail'),
+    path('exercises/', views.ExerciseListView.as_view(), name='exercise-list'),
 ]
