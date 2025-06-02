@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Workout Plans</h2>
+<ul class="list-group">
+    {% for plan in object_list %}
+        <li class="list-group-item">
+            <a href="{% url 'workoutplan-detail' plan.pk %}">{{ plan.name }}</a>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No workout plans found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Exercises</h2>
+<ul class="list-group">
+    {% for exercise in object_list %}
+        <li class="list-group-item">
+            <strong>{{ exercise.name }}</strong>: {{ exercise.description }}
+        </li>
+    {% empty %}
+        <li class="list-group-item">No exercises available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

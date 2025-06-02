@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ object.name }}</h2>
+<p><strong>Description:</strong> {{ object.description }}</p>
+<h4>Exercises:</h4>
+<ul>
+    {% for exercise in object.exercises.all %}
+        <li>{{ exercise.name }} - {{ exercise.description }}</li>
+    {% empty %}
+        <li>No exercises in this plan.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
