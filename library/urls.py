@@ -26,6 +26,6 @@ urlpatterns = [
     path('workout-plans/', views.WorkoutPlanListView.as_view(), name='workoutplan-list'),
     path('workout-plans/<int:pk>/', views.WorkoutPlanDetailView.as_view(), name='workoutplan-detail'),
     path('exercises/', views.ExerciseListView.as_view(), name='exercise-list'),
-    path('trainers/', views.TrainerListView.as_view(), name='trainer_list')
+    path('trainers/', views.TrainerListView.as_view(), name='trainer-list')
 
 ]

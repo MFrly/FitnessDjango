@@ -29,7 +29,7 @@ def profile_view(request):
 
 class TrainerListView(ListView):
     model = UserProfile
-    template_name = 'trainer_list.html'
+    template_name = 'trainer-list.html'
 
     def get_queryset(self):
         # Return only users who are trainers

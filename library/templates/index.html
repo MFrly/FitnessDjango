@@ -1,6 +1,84 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-<h1>Welcome to the Fitness App!</h1>
-<p>Select a section from the navigation bar to get started.</p>
+<div class="container mt-5">
+
+    <!-- Auth Prompt -->
+    <div class="auth-box text-center bg-dark text-white p-4 rounded mb-4">
+        <h2>Welcome!</h2>
+        <p>
+            <a href="{% url 'login' %}" class="text-warning fw-bold">Login</a> or 
+            <a href="{% url 'signup' %}" class="text-warning fw-bold">Sign Up</a> to get started.
+        </p>
+    </div>
+
+    <!-- Welcome Banner -->
+    <div class="jumbotron text-center bg-light p-5 rounded shadow">
+        <h1 class="display-4">Welcome to the Fitness App!</h1>
+        <p class="lead">Your personalized hub for training, tracking, and transforming your fitness journey.</p>
+        <a class="btn btn-primary btn-lg mt-3" href="{% url 'userprofile-list' %}" role="button">Get Started</a>
+    </div>
+
+    <!-- Image Feature Blocks -->
+    <div class="features d-flex justify-content-between text-center my-5">
+        <div class="feature-card bg-dark text-white p-3 rounded flex-fill mx-2">
+            <img src="{% static 'img/workout.jpg' %}" alt="Workout Plans" class="img-fluid rounded mb-3">
+            <h4>Workout Plans</h4>
+        </div>
+        <div class="feature-card bg-dark text-white p-3 rounded flex-fill mx-2">
+            <img src="{% static 'img/trainers.jpg' %}" alt="Trainers" class="img-fluid rounded mb-3">
+            <h4>Trainers</h4>
+        </div>
+        <div class="feature-card bg-dark text-white p-3 rounded flex-fill mx-2">
+            <img src="{% static 'img/exercises.jpg' %}" alt="Exercises" class="img-fluid rounded mb-3">
+            <h4>Exercises</h4>
+        </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="row text-center mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">My Profile</h5>
+                    <p class="card-text">Update your age, weight, and other personal stats.</p>
+                    <a href="{% url 'userprofile-list' %}" class="btn btn-outline-primary">Manage Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Workout Plans</h5>
+                    <p class="card-text">Check out your tailored workout plans and progress.</p>
+                    <a href="{% url 'workoutplan-list' %}" class="btn btn-outline-success">View Plans</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Exercises</h5>
+                    <p class="card-text">Browse available exercises by type and muscle group.</p>
+                    <a href="{% url 'exercise-list' %}" class="btn btn-outline-info">Explore Exercises</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center my-5">
+        <h3>Need a personal trainer?</h3>
+        <p>Contact our experts and start your personalized fitness journey today.</p>
+        <a href="{% url 'trainer-list' %}" class="btn btn-warning">Find Trainers</a>
+    </div>
+
+
+
+
+</div>
 {% endblock %}
