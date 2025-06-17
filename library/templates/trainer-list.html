@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Seznam trenérů{% endblock %}
+
+{% block content %}
+  <h2>Seznam trenérů</h2>
+
+  <ul>
+    {% for trainer in object_list %}
+      <li>
+        <a href="{% url 'userprofile-detail' trainer.pk %}">
+          {{ trainer.user.username }}
+        </a>
+      </li>
+    {% empty %}
+      <li>Žádní trenéři nejsou k dispozici.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'userprofile-list' %}">Zpět na uživatele</a>
+{% endblock %}

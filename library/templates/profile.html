@@ -1,20 +1,16 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block content %}
-<div class="container mt-4">
-    <h2>{{ profile.user.username }}'s Profile</h2>
-    <ul class="list-group">
-        <li class="list-group-item">Age: {{ profile.age }}</li>
-        <li class="list-group-item">Height: {{ profile.height }} cm</li>
-        <li class="list-group-item">Weight: {{ profile.weight }} kg</li>
-        <li class="list-group-item">
-            Trainer:
-            {% if profile.trainer %}
-                {{ profile.trainer.user.username }}
-            {% else %}
-                No trainer selected
-            {% endif %}
-        </li>
-    </ul>
-</div>
+  <h2>Můj profil</h2>
+
+  <p>Uživatel: {{ profile.user.username }}</p>
+  <p>Věk: {{ profile.age }}</p>
+  <p>Výška: {{ profile.height }} cm</p>
+  <p>Váha: {{ profile.weight }} kg</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Uložit změny</button>
+  </form>
+
 {% endblock %}

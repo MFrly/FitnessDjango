@@ -1,36 +1,26 @@
-"""
-URL configuration for database project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from . import views
-import django.contrib.auth.urls
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('profile/', views.profile_view, name='profile'),
+    path('accounts/profile/', views.profile_view, name='profile'),
+    path('accounts/signup/', views.SignupView.as_view(), name='signup'),
+    path('registration/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('registration/', include('django.contrib.auth.urls')),
+
     path('profiles/', views.UserProfileListView.as_view(), name='userprofile-list'),
+    path('profiles/<int:pk>/', views.UserProfileDetailView.as_view(), name='userprofile-detail'),
+
+    path('trainers/', views.TrainerListView.as_view(), name='trainer-list'),
+    path('exercises/', views.ExerciseListView.as_view(), name='exercise-list'),
     path('workout-plans/', views.WorkoutPlanListView.as_view(), name='workoutplan-list'),
     path('workout-plans/<int:pk>/', views.WorkoutPlanDetailView.as_view(), name='workoutplan-detail'),
-    path('exercises/', views.ExerciseListView.as_view(), name='exercise-list'),
-    path('trainers/', views.TrainerListView.as_view(), name='trainer-list'),
-    path('accounts/signup/', views.SignupView.as_view(), name='signup'),
-    path('accounts/', include('django.contrib.auth.urls')),
 
-
+    path('workout-plans/create/', views.WorkoutPlanCreateView.as_view(), name='workoutplan-create'),
+    path('exercises/create/', views.ExerciseCreateView.as_view(), name='exercise-create'),
+    path('workout-plans/<int:pk>/delete/', views.WorkoutPlanDeleteView.as_view(), name='workoutplan-delete'),
+    path('exercises/<int:pk>/delete/', views.ExerciseDeleteView.as_view(), name='exercise-delete'),
 ]

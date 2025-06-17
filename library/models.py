@@ -32,10 +32,11 @@ class UserProfile(models.Model):
 
 
 class WorkoutPlan(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='workout_plans')
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='workout_plans')
     planName = models.CharField(max_length=100, verbose_name='Plan Name')
     finalWeight = models.FloatField(verbose_name='Final Weight (kg)')
     planDescription = models.TextField(blank=True, verbose_name='Plan Description')
+
 
     class Meta:
         ordering = ['planName']

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Opravdu chceš smazat cvik "{{ object }}"?</h2>
+  <form method="post">{% csrf_token %}
+    <button type="submit" class="btn btn-danger">Smazat</button>
+    <a href="{% url 'exercise-list' %}" class="btn btn-secondary">Zrušit</a>
+  </form>
+{% endblock %}

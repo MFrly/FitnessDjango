@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Workout Plans</h2>
-<ul class="list-group">
-    {% for plan in object_list %}
-        <li class="list-group-item">
-            <a href="{% url 'workoutplan-detail' plan.pk %}">{{ plan.name }}</a>
-        </li>
-    {% empty %}
-        <li class="list-group-item">No workout plans found.</li>
-    {% endfor %}
-</ul>
+    <h2 class="mb-4">Tréninkové plány</h2>
+    {% if object_list %}
+        <ul class="list-group">
+            {% for plan in object_list %}
+                <li class="list-group-item">
+                    <a href="{% url 'workoutplan-detail' plan.pk %}">
+                        {{ plan.planName }} - {{ plan.user.user.username }}
+                    </a>
+                    <a href="{% url 'workoutplan-delete' plan.pk %}" class="btn btn-danger btn-sm">Smazat</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Žádné tréninkové plány nebyly nalezeny.</p>
+    {% endif %}
 {% endblock %}

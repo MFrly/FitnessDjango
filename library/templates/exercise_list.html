@@ -6,6 +6,7 @@
     {% for exercise in object_list %}
         <li class="list-group-item">
             <strong>{{ exercise.name }}</strong>: {{ exercise.description }}
+             <a href="{% url 'exercise-delete' exercise.pk %}">Smazat</a>
         </li>
     {% empty %}
         <li class="list-group-item">No exercises available.</li>

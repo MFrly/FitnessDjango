@@ -1,84 +1,86 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block content %}
 <div class="container mt-5">
 
-    <!-- Auth Prompt -->
-    <div class="auth-box text-center bg-dark text-white p-4 rounded mb-4">
-        <h2>Welcome!</h2>
+    <!-- Auth Box -->
+    <div class="text-center bg-dark text-white p-4 rounded shadow-sm mb-5">
+        <h2>Vítej ve Fitness App!</h2>
         <p>
-            <a href="{% url 'login' %}" class="text-warning fw-bold">Login</a> or 
-            <a href="{% url 'signup' %}" class="text-warning fw-bold">Sign Up</a> to get started.
+            <a href="{% url 'login' %}" class="text-warning fw-bold">Přihlásit se</a> nebo 
+            <a href="{% url 'signup' %}" class="text-warning fw-bold">Registrovat se</a> a začít cvičit!
         </p>
     </div>
 
     <!-- Welcome Banner -->
-    <div class="jumbotron text-center bg-light p-5 rounded shadow">
-        <h1 class="display-4">Welcome to the Fitness App!</h1>
-        <p class="lead">Your personalized hub for training, tracking, and transforming your fitness journey.</p>
-        <a class="btn btn-primary btn-lg mt-3" href="{% url 'userprofile-list' %}" role="button">Get Started</a>
+    <div class="bg-light p-5 rounded shadow text-center mb-5">
+        <h1 class="display-4">Začni svou fitness cestu</h1>
+        <p class="lead">Osobní plánování, sledování pokroku a odborné rady.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'userprofile-list' %}">Začít</a>
     </div>
 
-    <!-- Image Feature Blocks -->
-    <div class="features d-flex justify-content-between text-center my-5">
-        <div class="feature-card bg-dark text-white p-3 rounded flex-fill mx-2">
-            <img src="{% static 'img/workout.jpg' %}" alt="Workout Plans" class="img-fluid rounded mb-3">
-            <h4>Workout Plans</h4>
+    <!-- Feature Highlights -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-3">
+            <div class="bg-dark text-white p-3 rounded h-100">
+                <img src="{% static 'img/workout.jpg' %}" alt="Workout Plans" class="img-fluid rounded mb-2">
+                <h4>Tréninkové plány</h4>
+            </div>
         </div>
-        <div class="feature-card bg-dark text-white p-3 rounded flex-fill mx-2">
-            <img src="{% static 'img/trainers.jpg' %}" alt="Trainers" class="img-fluid rounded mb-3">
-            <h4>Trainers</h4>
+        <div class="col-md-4 mb-3">
+            <div class="bg-dark text-white p-3 rounded h-100">
+                <img src="{% static 'img/trainers.jpg' %}" alt="Trainers" class="img-fluid rounded mb-2">
+                <h4>Trenéři</h4>
+            </div>
         </div>
-        <div class="feature-card bg-dark text-white p-3 rounded flex-fill mx-2">
-            <img src="{% static 'img/exercises.jpg' %}" alt="Exercises" class="img-fluid rounded mb-3">
-            <h4>Exercises</h4>
+        <div class="col-md-4 mb-3">
+            <div class="bg-dark text-white p-3 rounded h-100">
+                <img src="{% static 'img/exercises.jpg' %}" alt="Exercises" class="img-fluid rounded mb-2">
+                <h4>Cvičení</h4>
+            </div>
         </div>
     </div>
 
-    <!-- Feature Cards -->
-    <div class="row text-center mt-5">
+    <!-- Action Cards -->
+    <div class="row text-center mb-5">
         <div class="col-md-4">
-            <div class="card shadow-sm">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">My Profile</h5>
-                    <p class="card-text">Update your age, weight, and other personal stats.</p>
-                    <a href="{% url 'userprofile-list' %}" class="btn btn-outline-primary">Manage Profile</a>
+                    <h5 class="card-title">Můj profil</h5>
+                    <p class="card-text">Uprav své údaje jako věk, váha, výška a role.</p>
+                    <a href="{% url 'profile' %}" class="btn btn-outline-primary">Profil</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card shadow-sm">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Workout Plans</h5>
-                    <p class="card-text">Check out your tailored workout plans and progress.</p>
-                    <a href="{% url 'workoutplan-list' %}" class="btn btn-outline-success">View Plans</a>
+                    <h5 class="card-title">Plány tréninku</h5>
+                    <p class="card-text">Prohlédni si své plány a sleduj pokrok.</p>
+                    <a href="{% url 'workoutplan-list' %}" class="btn btn-outline-success">Plány</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card shadow-sm">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Exercises</h5>
-                    <p class="card-text">Browse available exercises by type and muscle group.</p>
-                    <a href="{% url 'exercise-list' %}" class="btn btn-outline-info">Explore Exercises</a>
+                    <h5 class="card-title">Cvičení</h5>
+                    <p class="card-text">Prozkoumej cviky podle svalových skupin.</p>
+                    <a href="{% url 'exercise-list' %}" class="btn btn-outline-info">Cvičení</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Call to Action -->
-    <div class="text-center my-5">
-        <h3>Need a personal trainer?</h3>
-        <p>Contact our experts and start your personalized fitness journey today.</p>
-        <a href="{% url 'trainer-list' %}" class="btn btn-warning">Find Trainers</a>
+    <div class="text-center my-5 p-4 bg-warning bg-opacity-75 rounded shadow">
+        <h3>Hledáš osobního trenéra?</h3>
+        <p>Vyber si odborníka a posuň své výsledky na vyšší úroveň.</p>
+        <a href="{% url 'trainer-list' %}" class="btn btn-dark">Najít trenéra</a>
     </div>
-
-
-
 
 </div>
 {% endblock %}

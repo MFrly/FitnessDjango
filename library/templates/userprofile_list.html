@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
 
+{% block title %}Uživatelské profily{% endblock %}
+
 {% block content %}
-<h2>User Profiles</h2>
-<ul class="list-group">
-    {% for profile in object_list %}
-        <li class="list-group-item">{{ profile.name }}</li>
-    {% empty %}
-        <li class="list-group-item">No profiles available.</li>
-    {% endfor %}
-</ul>
+  <h2>Uživatelské profily</h2>
+
+  <div style="margin-bottom: 20px; color: aliceblue;">
+    <a href="{% url 'userprofile-list' %}">
+      <button>Users</button>
+    </a>
+    <a href="{% url 'trainer-list' %}">
+      <button>Trainers</button>
+    </a>
+  </div>
+
+  {% if object_list %}
+    <ul>
+      {% for profile in object_list %}
+        {% if not profile.is_trainer %}
+          <li>
+            <a href="{% url 'userprofile-detail' profile.pk %}">
+              {{ profile.user.username }} ({{ profile.age }} let)
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Žádní běžní uživatelé nebyli nalezeni.</p>
+  {% endif %}
 {% endblock %}
