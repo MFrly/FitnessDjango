@@ -7,11 +7,7 @@ class UserProfile(models.Model):
     age = models.IntegerField(verbose_name='Age')
     height = models.FloatField(verbose_name='Height (cm)')
     weight = models.FloatField(verbose_name='Weight (kg)')
-
-    # New field: is this user a trainer?
     is_trainer = models.BooleanField(default=False, verbose_name='Is Trainer')
-
-    # For regular users: select a trainer (nullable)
     trainer = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
@@ -21,6 +17,7 @@ class UserProfile(models.Model):
         related_name='clients',
         verbose_name='Selected Trainer'
     )
+
 
     class Meta:
         ordering = ['user__username']

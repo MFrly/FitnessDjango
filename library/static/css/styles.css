@@ -82,7 +82,59 @@ footer {
     border-radius: 8px;
     margin-bottom: 10px;
 }
-.feature-card h3 {
+.feature-card h3 {a/* --- Zesvětlení hlavního pozadí nebo barvy textu --- */
+body {
+    background-color: #444; /* tmavší ale ne tak studené */
+    color: #f0f0f0; /* světlejší text pro čitelnost */
+}
+
+/* --- Úprava hlavního obsahu --- */
+main {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+/* --- Úprava karty (feature) --- */
+.feature-card {
+    background-color: #252525;
+    color: #f0f0f0;
+}
+
+.feature-card h3,
+.feature-card h4 {
+    color: #ffd700;
+}
+
+/* --- Oprava kartiček se světlým podkladem pro lepší kontrast --- */
+.card {
+    background-color: #2a2a2a;
+    color: #eee;
+    border: 1px solid #444;
+}
+
+/* --- Tlačítka (pokud je používáš) --- */
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- Zlepšení kontrastu textu ve formulářích --- */
+input, select, textarea {
+    background-color: #3a3a3a;
+    color: white;
+    border: 1px solid #666;
+    padding: 10px;
+    border-radius: 5px;
+}
+
     color: #ffd700;
 }
 

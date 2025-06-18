@@ -1,11 +1,12 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-  <h2>Registrace</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrovat</button>
-  </form>
-  <p>Máš už účet? <a href="{% url 'login' %}">Přihlas se</a></p>
+<div class="container mt-5">
+    <h2>Registrace</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Zaregistrovat se</button>
+    </form>
+</div>
 {% endblock %}

@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="mb-4">Tréninkové plány</h2>
-    {% if object_list %}
-        <ul class="list-group">
-            {% for plan in object_list %}
-                <li class="list-group-item">
+<h2 class="mb-4">Tréninkové plány</h2>
+
+<!-- Tlačítko pro přidání nového plánu -->
+<a href="{% url 'workoutplan-create' %}" class="btn btn-success mb-3">Přidat nový plán</a>
+
+{% if object_list %}
+    <ul class="list-group">
+        {% for plan in object_list %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
                     <a href="{% url 'workoutplan-detail' plan.pk %}">
-                        {{ plan.planName }} - {{ plan.user.user.username }}
+                        <strong>{{ plan.planName }}</strong>
                     </a>
-                    <a href="{% url 'workoutplan-delete' plan.pk %}" class="btn btn-danger btn-sm">Smazat</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Žádné tréninkové plány nebyly nalezeny.</p>
-    {% endif %}
+                    <span class="text-muted">— {{ plan.user_profile.user.username }}</span>
+                </div>
+                <a href="{% url 'workoutplan-delete' plan.pk %}" class="btn btn-danger btn-sm">Smazat</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Žádné tréninkové plány nebyly nalezeny.</p>
+{% endif %}
 {% endblock %}

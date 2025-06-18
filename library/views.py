@@ -7,6 +7,9 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import DeleteView
+from .forms import CustomSignupForm
+from django.views.generic import DetailView
+
 
 from .models import UserProfile, WorkoutPlan, Exercise, WorkoutExercise
 from .forms import UserProfileForm, WorkoutPlanForm, ExerciseForm
@@ -100,3 +103,25 @@ class ExerciseDeleteView(LoginRequiredMixin, DeleteView):
     model = Exercise
     template_name = 'exercise_confirm_delete.html'
     success_url = reverse_lazy('exercise-list')
+    
+class SignupView(View):
+    def get(self, request):
+        form = CustomSignupForm()
+        return render(request, 'accounts/signup.html', {'form': form})
+
+    def post(self, request):
+        form = CustomSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # z formuláře vytáhneme další data
+            age = form.cleaned_data['age']
+            height = form.cleaned_data['height']
+            weight = form.cleaned_data['weight']
+            # vytvoříme profil
+            UserProfile.objects.create(user=user, age=age, height=height, weight=weight)
+            return redirect('login')
+        return render(request, 'accounts/signup.html', {'form': form})
+    
+class ExerciseDetailView(DetailView):
+    model = Exercise
+    template_name = 'exercise_detail.html'

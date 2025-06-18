@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
+from django.contrib.auth.views import LogoutView 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,11 +12,15 @@ urlpatterns = [
     path('registration/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('registration/', include('django.contrib.auth.urls')),
 
+
+
+
     path('profiles/', views.UserProfileListView.as_view(), name='userprofile-list'),
     path('profiles/<int:pk>/', views.UserProfileDetailView.as_view(), name='userprofile-detail'),
 
     path('trainers/', views.TrainerListView.as_view(), name='trainer-list'),
     path('exercises/', views.ExerciseListView.as_view(), name='exercise-list'),
+    path('exercises/<int:pk>/', views.ExerciseDetailView.as_view(), name='exercise-detail'),
     path('workout-plans/', views.WorkoutPlanListView.as_view(), name='workoutplan-list'),
     path('workout-plans/<int:pk>/', views.WorkoutPlanDetailView.as_view(), name='workoutplan-detail'),
 
